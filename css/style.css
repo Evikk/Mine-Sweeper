@@ -1,0 +1,518 @@
+/* fonts */
+
+@font-face {
+    font-family: 'doom';
+    src: URL('../img/fonts/doom.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'header-left';
+    src: URL('../img/fonts/header-left.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'header-right';
+    src: URL('../img/fonts/header-right.ttf') format('truetype');
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'doom';
+    overflow: hidden;
+}
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    background: url('../img/game-bg.jpg') center no-repeat; 
+    background-attachment: fixed;
+    background-size: 1970px;
+    text-align: center;
+}
+
+/* header */
+
+.header{
+    display: flex;
+    justify-content: center;
+    -webkit-text-stroke-width: 0.2px;
+    -webkit-text-stroke-color: rgb(29, 28, 28);
+    color: rgb(225, 23, 23);
+    font-size: 120px;
+}
+
+.header .left{
+    padding-top: 10px;
+    font-family: 'header-left';
+    pointer-events:none;
+}
+
+.header .right{
+    padding-top: 10px;
+    margin-left: 10px;
+    font-family: 'header-right';
+    pointer-events:none;
+}
+
+/* game board */
+
+.game-container{
+    padding: 0px;
+    margin-top: -80px;
+}
+
+.game-table{
+    
+    text-align: center;
+    margin: 2px auto;
+    padding: 10px;
+    background-color: grey;
+    
+}
+.cell {
+    border: 2px solid black;
+    text-align: center;
+    background-color: grey;
+    color: red;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+}
+.isMine-true {
+    background-image: url('../img/mine.png');
+    background-size: cover;
+    background-position: center;
+    background-color: rgb(116, 116, 116);
+}
+
+
+.isShown-false {
+    background-image: url('../img/grey.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.isSafe {
+    background-image: url('../img/status-bar/cards/safe.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.mark{
+    background-image: url('../img/flag.png');
+    background-size: cover;
+    background-position: center;
+}
+
+/* levels */
+
+.beginner {
+    width: 120px;
+    height: 120px;
+    font-size: 3em;
+}
+
+.medium {
+    width: 59px;
+    height: 59px;
+    font-size: 2em;
+}
+
+.expert {
+    width: 39px;
+    height: 39px;
+    font-size: 1.5em;
+}
+
+/* status bar */
+
+button{
+    box-shadow: 3px 4px 0px 0px #899599;
+    background:linear-gradient(to bottom, #ededed 5%, #a5a1a5 100%);
+    background-color:#ededed;
+    border-radius:5px;
+    border:1px solid #d6bcd6;
+    display:inline-block;
+    cursor:pointer;
+    padding:7px 25px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #e1e2ed;
+    outline: none;
+}
+
+button:hover {
+    background:linear-gradient(to bottom, #bab1ba 5%, #ededed 100%);
+    background-color:#bab1ba;
+}
+button:active {
+    position:relative;
+    top:1px;
+}
+
+
+.status-bar{
+    margin-top: auto;
+}
+
+.status-cards{
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    background-color: rgba(164,158,156,0.8);
+}
+
+.card {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    min-width: 150px;
+    height: 150px;
+    background-color: rgb(116, 116, 116);
+    border: 7px solid rgba(164,158,156,0.69);
+    font-size: 30px;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+    color: rgb(157, 155, 155);
+    padding: 0 10px;
+    
+}
+
+.level-btn {
+    width: 230px;
+    color: red;
+    font-size: 30px;
+
+}
+.undo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 200px;
+}
+.undo-btn{
+    cursor: pointer;
+    margin-top: 15px;
+    width: 70px;
+    height: 70px;
+    background-image: url('../img/status-bar/cards/undo.png');
+    background-size: cover;
+    background-position: center;
+    transition: 0.5s;
+}
+.undo-btn:hover{
+    transform: rotate(-45deg);
+}
+
+.face {
+    background-image: url('../img/status-bar/face/3.gif');
+    background-size: 230%;
+    background-position: center;
+    background-color: rgb(45, 44, 44);
+    cursor: pointer;
+}
+
+.health p{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.health-num{
+    font-size: 70px;
+    color: red;
+}
+
+.time{
+    width: 310px
+}
+
+.time p {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.timer {
+    color: red;
+    font-size: 70px;
+}
+
+.levels {
+    display: flex;
+    flex-direction: column;
+    color: red;
+    font-size: 30px;
+    list-style: none;
+    align-items: flex-start;
+}
+
+.levels li {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+}
+
+.levels li p {
+    margin-left: 5px;
+}
+
+.bulbs{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    margin-top: 10px;
+}
+
+.safe-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    margin-top: 10px;
+}
+
+.safe{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 200px;
+}
+
+.safe-btn {
+    margin-top: 10px;
+    color: red;
+    font-size: 40px;
+}
+
+.hints{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 280px;
+    max-width: 280px;
+}
+
+.center-p {
+    display: flex;
+    align-items: center;
+
+}
+
+.hints p {
+    margin: auto;
+    color: red;
+}
+
+.bulb{
+    width: 80px;
+    height: 80px;
+    background-size: cover;
+    background-position: center;
+}
+
+
+/* modal */
+
+.popup {
+    margin: auto;
+    padding: 20px;
+    height: 400px;
+    background: #fff;
+    border-radius: 5px;
+    width: 600px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+  
+.popup h1 {
+    font-size: 50px;
+    margin-top: 0;
+    color: #333;
+    margin-bottom: 40px;
+}
+.popup h2 {
+    font-size: 40px;
+    margin-top: 0;
+    color: #333;
+    margin-bottom: 40px;
+}
+.popup h3 {
+    font-size: 30px;
+    margin-top: 0;
+    color: #333;
+    margin-bottom: 40px;
+}
+.popup h4 {
+    font-size: 30px;
+    margin-top: 0;
+    color: #333;
+    margin-bottom: 10px;
+}
+.popup .close {
+    display: flex;
+    align-items: center;
+    padding: 6px 11px;
+    float: right;
+    font-size: 15px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+}
+
+/* high-score table */
+
+.score-table {
+    margin: auto;
+}
+.score-body {
+    background-color: #fff;
+    margin: auto;
+    padding: 10px;
+}
+
+.score-body td {
+    padding: 20px 40px;
+    font-size: 20px;
+}
+
+input[type=text] {
+    width: 50%;
+    padding: 12px 20px;
+    margin: 0 0;
+    display: inline-block;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 25px;
+}
+
+.submit-btn{
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+/* create map button */
+
+.create-btn{
+    /* z-index: -1; */
+    position: absolute;
+    left: 30px;
+    top: 20px;
+    margin: 10px 0 0 10px;
+    height: 100px;
+	border-radius:50%;
+	border:2px solid #899599;
+	cursor:pointer;
+	color:#ffffff;
+	font-size:20px;
+	padding:20px 7px;
+	text-decoration:none;
+    text-shadow:0px 1px 0px #2f6627;
+    color: red;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+}
+
+.create-btn:active {
+	position: absolute;
+	top:18px;
+}
+
+
+/* media queries */
+
+@media only screen and (max-width: 1366px) {
+
+    .header{
+        font-size: 80px;
+    }
+    .game-container {
+        margin: auto;
+    }
+    .beginner {
+        width: 90px;
+        height: 90px;
+        font-size: 2em;
+    }
+    
+    .medium {
+        width: 44px;
+        height: 44px;
+        font-size: 1em;
+    }
+    
+    .expert {
+        width: 29px;
+        height: 29px;
+        font-size: 0.5em;
+    }
+
+    .status-bar {
+        margin-top: auto;
+    }
+    .status-cards{
+        justify-content: center;
+
+    }
+    .status-cards > *{
+        min-width: 100px;
+        max-width: 250px;
+        font-size: 20px;
+        height: 100px;
+    }
+    .levels{
+        width: 190px;
+    }
+    .hints {
+        width: 220px;
+    }
+    .hints p{
+        font-size: 20px;
+    }
+    .card {padding: 0;}
+    .card > *, .level-btn, .safe-container{
+        max-width: 170px;
+        font-size: 23px;
+        padding: 0px 5px;
+        margin: 0;
+    }
+    .bulb, .undo-btn{
+        margin-bottom: 10px;
+        width: 40px;
+        height: 40px;
+    }
+    .bulbs{
+        margin-top: 10px;
+    }
+    .timer, .health-num{
+        margin-bottom: 10px;
+        font-size: 30px;
+    }
+    .time, .health {
+        width: 200px;
+    }
+    .safe-btn{
+        width: 35px;
+        height: 40px;
+        font-size: 30px;
+        padding: 0px 5px;
+        margin-top: 10px;
+    }
+    .undo{
+        align-items: center;
+        font-size: 23px;
+        justify-content: flex-end;
+    }
+    .create-btn{
+        right: 300px;
+    }
+    
+}

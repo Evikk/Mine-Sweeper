@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Mine Sweeper</title>
+</head>
+<body  onload="initGame()">
+    <button class="create-btn" onclick="createMode()">Create<br>map</button>
+    <div class="header">
+        <h1 class="left">Mine</h1>
+        <h1 class="right">sweepeR</h1>
+    </div>
+    <div class="game-container"></div>
+    <div class="status-bar">
+        <ul class="status-cards">
+            <li class="card undo">
+                <div class="undo-btn" onclick="undoBoard()"></div>
+                <span>UNDO</span>
+            </li>
+            <li class="card time">
+                <p>
+                    <span class="timer">00:00</span>
+                    <span>TIME</span>
+                </p>
+            </li>
+            <li class="card health">
+                <p>
+                    <span class="health-num">3</span>
+                    <span>HEALTH</span>
+                </p>
+            </li>
+            <li class="card face" onclick="initGame()"></li>
+            <li class="card hints">
+                <div class="bulbs">
+                    <span class="bulb" id="bulb1" onclick="hintModeSwitch(this)"></span>
+                    <span class="bulb" id="bulb2" onclick="hintModeSwitch(this)"></span>
+                    <span class="bulb" id="bulb3" onclick="hintModeSwitch(this)"></span>
+                </div>
+                <span>HINTS</span>
+            </li>
+            <li class="card safe">
+                <div class="safe-container">
+                    <button class="safe-btn" onclick="safeClick()">3</button>
+                </div>
+                <span>SAFE</span>
+            </li>
+            <li class="card levels">
+                <ul class="levels">
+                    <li><button class="level-btn" name="level" id="beginner" checked onclick="chooseLevel('beginner')">Beginner</button></li>
+                    <li><button class="level-btn" name="level" id="medium" onclick="chooseLevel('medium')">Medium</button></li>
+                    <li><button class="level-btn" name="level" id="expert" onclick="chooseLevel('expert')">Expert</button></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <script src="js/board.js"></script>
+    <script src="js/create.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/clicks.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/timer.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
